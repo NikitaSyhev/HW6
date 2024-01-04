@@ -14,6 +14,9 @@ function Vehicle(name, speed, x, y) {
 }
 
 function Car(name, speed, x,y, horsePower) {
+    if(!new.target) { 
+        throw new Error('Invalid inicialization: operator new expected;'); //
+    }
     this.horsePower = horsePower;
     this.__proto__= new Vehicle(name, speed, x, y); 
     this.beep = function() {
@@ -28,5 +31,6 @@ let car1 = new Car('BMW', 200, 20, 20, 300);
 console.log(car1);
 console.log('Вызываем метод beep().');
 car1.beep();
+console.log('Вызываем метод move(50, 50) и выводим изененный объект.');
 car1.move(50,50);
 console.log(car1);
